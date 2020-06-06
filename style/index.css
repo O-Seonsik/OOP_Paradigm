@@ -1,0 +1,7 @@
+body{margin: 0; padding: 0; width: 1024px; margin: 0 auto;}
+ul{margin: 0; padding: 0;}
+li{margin: 0; padding: 0;}
+nav>ul{height: 50px; line-height: 50px;}
+nav>ul>li{display:inline-block; width:14%; text-align: center; background-color: grey;}
+nav>ul>li:hover{background-color: black;}
+nav>ul>li>a{text-decoration: none; color: white; font-weight: bold;display: block;}
