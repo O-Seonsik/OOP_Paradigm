@@ -21,6 +21,7 @@
                 <td>rent</td>
                 <td>rent_num</td>
             </tr>
+            <% if (list.getListSize() != 0){%>
             <c:forEach var="cnt" begin="0" end="${BBS_LIST.listSize-1}">
                 <tr>
                     <td>${BBS_LIST.id[cnt]}</td>
@@ -45,5 +46,6 @@
         <c:forEach var="cnt" begin="0" end="<%=pageSize%>">
             <a href="/library/?path=list?SORT=${param.SORT}&PAGE=${BBS_LIST.page[cnt]}">${BBS_LIST.page[cnt]}</a>
         </c:forEach>
+        <%}%>
     </body>
 </html>
