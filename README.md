@@ -13,5 +13,5 @@
 - HTML
 - Docker
 
-##DB 구조
+## DB 구조
 - ...
