@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee">
+    <servlet>
+        <servlet-name>bbs-list-servlet</servlet-name>
+        <servlet-class>BBS.BBSListServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>bbs-list-servlet</servlet-name>
+        <url-pattern>/list</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>rent-servlet</servlet-name>
+        <servlet-class>BBS.BBSRentServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>rent-servlet</servlet-name>
+        <url-pattern>/rent</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>return-servlet</servlet-name>
+        <servlet-class>BBS.BBSReturnServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>return-servlet</servlet-name>
+        <url-pattern>/return</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>join-servlet</servlet-name>
+        <servlet-class>BBS.JoinServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>join-servlet</servlet-name>
+        <url-pattern>/join</url-pattern>
+    </servlet-mapping>
+</web-app>
