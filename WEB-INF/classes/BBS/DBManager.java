@@ -41,4 +41,23 @@ public class DBManager {
             catch(Exception ignored) {}
         }
     }
+
+    // 데이터베이스 입력값 유효성 검사
+    public boolean executeQuery(String key1, String value1, String key2, String value2, String table) throws ServletException {
+        DBConnect dbConnect = new DBConnect();
+        Connection conn = dbConnect.getConn();
+        Statement stmt = dbConnect.getStmt();
+        try{
+            ResultSet rs = stmt.executeQuery("SELECT * FROM " + table + " WHERE " + key1 + " = '" + value1 + "' AND " + key2 + " = '" + value2 +"'");
+            if(rs.next()) return true;
+            else return false;
+        }catch (Exception e){
+            throw new ServletException();
+        }finally{
+            try{stmt.close();}
+            catch(Exception ignored) {}
+            try{conn.close();}
+            catch(Exception ignored) {}
+        }
+    }
 }
