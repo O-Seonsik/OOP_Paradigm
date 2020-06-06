@@ -25,6 +25,14 @@
         <url-pattern>/return</url-pattern>
     </servlet-mapping>
     <servlet>
+        <servlet-name>add-servlet</servlet-name>
+        <servlet-class>BBS.BBSAddServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>add-servlet</servlet-name>
+        <url-pattern>/add</url-pattern>
+    </servlet-mapping>
+    <servlet>
         <servlet-name>join-servlet</servlet-name>
         <servlet-class>BBS.JoinServlet</servlet-class>
     </servlet>
