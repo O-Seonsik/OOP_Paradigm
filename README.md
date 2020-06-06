@@ -5,7 +5,7 @@
 - Server: Tomcat(Docker)
 - DB: MySQL(Docker)
 - SSL: letsencrypt
-- URL: https://test.oseonsik.com/library?path=list
+- URL: https://test.oseonsik.com/library
 
 ## 기술스택
 - Apache Tomcat/8.5.53
