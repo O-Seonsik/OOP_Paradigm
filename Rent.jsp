@@ -11,7 +11,7 @@
         <title>Title</title>
     </head>
     <body>
-        <form action="/library/rent" method="get">
+        <form action="rent" method="get">
             대여할 책 ID를 입력하세요: <input type="text" name = "ID">
             <input type="submit" value="확인">
         </form>
