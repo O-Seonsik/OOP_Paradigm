@@ -5,7 +5,6 @@
     BBSList list = (BBSList)request.getAttribute("BBS_LIST");
     int pageSize = list.getPage().length;
     String res = (String)request.getAttribute("RETURN");
-    out.println(res);
 %>
 <html>
     <head>
