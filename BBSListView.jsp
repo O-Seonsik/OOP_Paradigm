@@ -44,15 +44,15 @@
             </c:forEach>
         </table>
         <c:if test = "${BBS_LIST.button[0]}">
-            <a href="/library/?path=list?SORT=${param.SORT}&PAGE=${BBS_LIST.page[0]-1}">◀</a>
+            <a href="/library/?path=list?SORT=${param.SORT}&PAGE=${BBS_LIST.page[0]-1}&RETURN=${param.RETURN}">◀</a>
         </c:if>
         <c:forEach var="cnt" begin="0" end="<%=pageSize%>">
-            <a href="/library/?path=list?SORT=${param.SORT}&PAGE=${BBS_LIST.page[cnt]}">${BBS_LIST.page[cnt]}</a>
+            <a href="/library/?path=list?SORT=${param.SORT}&PAGE=${BBS_LIST.page[cnt]}&RETURN=${param.RETURN}">${BBS_LIST.page[cnt]}</a>
         </c:forEach>
         <%}%>
         <c:if test = "${BBS_LIST.button[1]}">
             <c:set var="test" value="<%=pageSize%>" />
-            <a href="/library/?path=list?SORT=${param.SORT}&PAGE=${BBS_LIST.page[test-1]+1}">▶</a>
+            <a href="/library/?path=list?SORT=${param.SORT}&PAGE=${BBS_LIST.page[test-1]+1}&RETURN=${param.RETURN}">▶</a>
         </c:if>
     </body>
 </html>
