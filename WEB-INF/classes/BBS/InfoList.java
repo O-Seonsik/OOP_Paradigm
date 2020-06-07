@@ -8,6 +8,7 @@ public class InfoList {
     private ArrayList<String> stuNum = new ArrayList<String>();
     private ArrayList<String> phone = new ArrayList<String>();
     private ArrayList<String> mail = new ArrayList<String>();
+    private int listSize = 0;
 
     public void setId(int index, String id){this.id.add(index, id);}
     public void setName(int index, String name){this.name.add(index, name);}
@@ -20,4 +21,5 @@ public class InfoList {
     public String[] getStuNum(){return stuNum.toArray(new String[stuNum.size()]);}
     public String[] getPhone(){return phone.toArray(new String[phone.size()]);}
     public String[] getMail(){return mail.toArray(new String[mail.size()]);}
+    public int getListSize(){return id.size();}
 }
