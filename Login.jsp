@@ -9,6 +9,7 @@
             패스워드: <input type="password" name="PASSWORD" id="PASSWORD"> <br>
             <input type="submit" value="로그인">
         </form>
+        <a href="Join.jsp">회원가입</a>
     </body>
     <script>
         <%
