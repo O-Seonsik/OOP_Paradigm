@@ -21,7 +21,7 @@ public class JoinServlet extends HttpServlet {
                 if(dbManager.executeQuery("user_id", id, "members")) response.sendRedirect("Join.jsp?ERROR=2");
                 else{
                     Encryption encryption = new Encryption();
-                    dbManager.updateQuery("INSERT INTO members (user_name, user_id, passwd) VALUES ('" + id + "', '" + name + "', '" + encryption.getSHA256(confirm) + "')");
+                    dbManager.updateQuery("INSERT INTO members (user_name, user_id, passwd) VALUES ('" + name + "', '" + id + "', '" + encryption.getSHA256(confirm) + "')");
                     response.sendRedirect("Login.jsp");
                 }
             }catch(Exception e) {

@@ -21,11 +21,13 @@ public class LoginCheckFilter implements Filter {
                 if(id == null) httpResponse.sendRedirect("Login.jsp");
             } else chain.doFilter(request, response);
         }
+        chain.doFilter(request, response);
     }
     public void destroy(){}
     private boolean excludeUrl(HttpServletRequest request) {
         String uri = request.getRequestURI().toString().trim();
-        if (uri.startsWith("/library/Login.jsp")) return true;
+        if (uri.startsWith("/library/Login.jsp") || uri.startsWith("/library/login")) return true;
+        if (uri.startsWith("/library/Join.jsp") || uri.startsWith("/library/join")) return true;
         else return false;
     }
 }
