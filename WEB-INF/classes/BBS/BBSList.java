@@ -12,6 +12,7 @@ public class BBSList {
     private ArrayList<Integer> rentNumList = new ArrayList<Integer>();
     private ArrayList<Integer> page = new ArrayList<Integer>();
     private ArrayList<Boolean> button = new ArrayList<Boolean>();
+    private ArrayList<String> rentBy = new ArrayList<String>();
 
     public BBSList(){}
     public void setId(int index, Integer id){ this.idList.add(index, id); }
@@ -22,6 +23,7 @@ public class BBSList {
     public void setRentNum(int index, Integer rentNum){this.rentNumList.add(index, rentNum);}
     public void setPage(int index, Integer page){this.page.add(index, page);}
     public void setButton(int index, Boolean btn){this.button.add(index, btn);}
+    public void setRentBy(int index, String rentBy){this.rentBy.add(index, rentBy);}
     public Integer[] getId(){return idList.toArray(new Integer[idList.size()]);}
     public String[]  getName(){return nameList.toArray(new String[nameList.size()]);}
     public String[] getWriter(){return writerList.toArray(new String[writerList.size()]);}
@@ -30,5 +32,6 @@ public class BBSList {
     public Integer[] getRentNum(){return rentNumList.toArray(new Integer[rentNumList.size()]);}
     public Integer[] getPage(){return page.toArray(new Integer[page.size()]);}
     public Boolean[] getButton(){return button.toArray(new Boolean[button.size()]);}
+    public String[] getRentBy(){return rentBy.toArray(new String[rentBy.size()]);}
     public int getListSize(){return idList.size();}
 }

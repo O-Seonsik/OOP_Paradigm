@@ -20,6 +20,9 @@
                 <td>price</td>
                 <td>rent</td>
                 <td>rent_num</td>
+                <c:if test="${param.SORT eq 2}">
+                    <td>rented By</td>
+                </c:if>
             </tr>
             <% if (list.getListSize() != 0){%>
             <c:forEach var="cnt" begin="0" end="${BBS_LIST.listSize-1}">
@@ -37,8 +40,11 @@
                         </c:if>
                     </td>
                     <td>${BBS_LIST.rentNum[cnt]}</td>
+                    <c:if test="${param.SORT eq 2}">
+                        <td>${BBS_LIST.rentBy[cnt]}</td>
+                    </c:if>
                     <% if(!(res==null || res=="")){ %>
-                        <td><a href="/library/return?ID=${BBS_LIST.id[cnt]}">반납</a></td>
+                    <td><a href="/library/return?ID=${BBS_LIST.id[cnt]}">반납</a></td>
                     <% } %>
                 </tr>
             </c:forEach>

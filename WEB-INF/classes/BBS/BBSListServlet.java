@@ -54,10 +54,9 @@ public class BBSListServlet extends HttpServlet {
                     if(i > total) break;
                     list.setPage(i-pageIndex, i);
                 }
-                if(pageIndex + MAXINDEX < total) list.setButton(1, true);
+                if(pageIndex + MAXINDEX <= total) list.setButton(1, true);
                 else list.setButton(1, false);
             }
-
 
             if (sort == 0) rs = stmt.executeQuery("SELECT * FROM booksinfo ORDER BY id ASC LIMIT " + (page-1)*5 + ", " + 5);
             else if (sort == 1) rs = stmt.executeQuery("SELECT * FROM booksinfo ORDER BY rent_num DESC, id ASC LIMIT " + (page-1)*5 + ", " + 5);
@@ -72,6 +71,7 @@ public class BBSListServlet extends HttpServlet {
                 list.setPrice(i, rs.getInt("price"));
                 list.setRent(i, rs.getBoolean("rent"));
                 list.setRentNum(i, rs.getInt("rent_num"));
+                list.setRentBy(i, rs.getString("rent_by"));
             }
         }catch(Exception e){ throw new ServletException(e);}
         finally {
