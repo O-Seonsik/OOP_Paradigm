@@ -14,14 +14,13 @@ public class LoginCheckFilter implements Filter {
         if (excludeUrl(httpRequest)) {
             chain.doFilter(request, response);
         }else{
-            if(session == null) {
-                httpResponse.sendRedirect("Login.jsp");
-            }else if(session != null){
+            if(session == null)  httpResponse.sendRedirect("Login.jsp");
+            else {
                 String id = (String) session.getAttribute("ID");
                 if(id == null) httpResponse.sendRedirect("Login.jsp");
-            } else chain.doFilter(request, response);
+                else chain.doFilter(request, response);
+            }
         }
-        chain.doFilter(request, response);
     }
     public void destroy(){}
     private boolean excludeUrl(HttpServletRequest request) {
