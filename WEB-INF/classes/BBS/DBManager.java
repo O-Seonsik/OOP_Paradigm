@@ -14,7 +14,7 @@ public class DBManager {
         try{
             stmt.executeUpdate(SQL);
         }catch (Exception e){
-            throw new ServletException();
+            throw new ServletException(e);
         }finally{
             try{stmt.close();}
             catch(Exception ignored) {}

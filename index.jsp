@@ -10,6 +10,7 @@
     </head>
     <body>
     <a href="/library/Logout.jsp">로그아웃</a>
+    <a href="/library/Join.jsp">회원가입</a>
         <nav>
             <ul>
                 <li><a href="/library/?path=list">목록</a></li><!--
