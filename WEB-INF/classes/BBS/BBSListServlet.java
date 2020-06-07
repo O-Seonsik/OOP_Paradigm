@@ -31,22 +31,34 @@ public class BBSListServlet extends HttpServlet {
         DBConnect dbConnect = new DBConnect();
         Connection conn = dbConnect.getConn();
         Statement stmt = dbConnect.getStmt();
-        int totPage = 0;
         try{
             ResultSet rs = stmt.executeQuery("SELECT COUNT(*) AS COUNT FROM booksinfo");
             if(sort == 2) rs = stmt.executeQuery("SELECT COUNT(*) AS COUNT FROM booksinfo WHERE !rent");
             else if(sort == 3) rs = stmt.executeQuery("SELECT COUNT(*) AS COUNT FROM booksinfo WHERE rent");
+            if(page >= 10) list.setButton(0, true);
+            else list.setButton(0, false);
             if(rs.next()) {
-                ArrayList<Integer> pageInfo = new ArrayList<Integer>();
                 int total = rs.getInt("COUNT");
                 if(total%5 == 0) total /= 5;
                 else total = total/5 + 1;
 
-                for(int i = page/10+1; i <= page/10+10; i++){
-                    if(i > total) break;
-                    list.setPage(i-(total/10+1), i);
+                int pageIndex = page;
+                int MAXINDEX = 10;
+                if(pageIndex < 10){
+                    pageIndex = 1;
+                    MAXINDEX = 9;
                 }
+                else pageIndex = pageIndex / 10 * 10;
+
+                for(int i = pageIndex; i < pageIndex + MAXINDEX; i++){
+                    if(i > total) break;
+                    list.setPage(i-pageIndex, i);
+                }
+                if(pageIndex + MAXINDEX < total) list.setButton(1, true);
+                else list.setButton(1, false);
             }
+
+
             if (sort == 0) rs = stmt.executeQuery("SELECT * FROM booksinfo ORDER BY id ASC LIMIT " + (page-1)*5 + ", " + 5);
             else if (sort == 1) rs = stmt.executeQuery("SELECT * FROM booksinfo ORDER BY rent_num DESC, id ASC LIMIT " + (page-1)*5 + ", " + 5);
             else if (sort == 2) rs = stmt.executeQuery("SELECT * FROM booksinfo WHERE !rent ORDER BY id ASC");
