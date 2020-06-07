@@ -9,6 +9,7 @@
         <title>도서관리 시스템</title>
     </head>
     <body>
+    <a href="/library/Logout.jsp">로그아웃</a>
         <nav>
             <ul>
                 <li><a href="/library/?path=list">목록</a></li><!--
