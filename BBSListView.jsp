@@ -41,7 +41,7 @@
                     </td>
                     <td>${BBS_LIST.rentNum[cnt]}</td>
                     <c:if test="${param.SORT eq 2}">
-                        <td>${BBS_LIST.rentBy[cnt]}</td>
+                        <td><a href="?path=MemberInfo?USERID=${BBS_LIST.rentBy[cnt]}">${BBS_LIST.rentBy[cnt]}</a></td>
                     </c:if>
                     <% if(!(res==null || res=="")){ %>
                     <td><a href="/library/return?ID=${BBS_LIST.id[cnt]}">반납</a></td>
