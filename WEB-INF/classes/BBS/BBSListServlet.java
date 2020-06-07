@@ -3,7 +3,6 @@ import javax.servlet.http.*;
 import javax.servlet.*;
 import java.io.*;
 import java.sql.*;
-import java.util.ArrayList;
 
 public class BBSListServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
