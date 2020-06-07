@@ -61,8 +61,8 @@ public class BBSListServlet extends HttpServlet {
 
             if (sort == 0) rs = stmt.executeQuery("SELECT * FROM booksinfo ORDER BY id ASC LIMIT " + (page-1)*5 + ", " + 5);
             else if (sort == 1) rs = stmt.executeQuery("SELECT * FROM booksinfo ORDER BY rent_num DESC, id ASC LIMIT " + (page-1)*5 + ", " + 5);
-            else if (sort == 2) rs = stmt.executeQuery("SELECT * FROM booksinfo WHERE !rent ORDER BY id ASC");
-            else if (sort == 3) rs = stmt.executeQuery("SELECT * FROM booksinfo WHERE rent ORDER BY id ASC");
+            else if (sort == 2) rs = stmt.executeQuery("SELECT * FROM booksinfo WHERE !rent ORDER BY id ASC LIMIT " + (page-1)*5 + ", " + 5);
+            else if (sort == 3) rs = stmt.executeQuery("SELECT * FROM booksinfo WHERE rent ORDER BY id ASC LIMIT " + (page-1)*5 + ", " + 5);
 
             for(int i = 0; i < 5; i++) {
                 if (!rs.next()) break;
