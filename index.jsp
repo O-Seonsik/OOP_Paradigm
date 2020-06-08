@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     String path = (String)request.getParameter("path");
-    if(path==null || path=="") path = "list";
+    if(path==null || path=="") path = "index";
 %>
 <html>
     <head>
@@ -12,7 +12,7 @@
     <body class="d-flex flex-column h-100">
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
             <div class="container">
-                <a class="navbar-brand" href="#">책방</a>
+                <a class="navbar-brand" href="/library">책방</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -46,7 +46,11 @@
             </div>
         </nav>
         <main role="main" class="container" style="margin-top:56px; background:#fff;">
-            <jsp:include page="<%=path%>"/>
+            <% if (path.equals("index")){ %>
+                메인
+            <%}else{%>
+                <jsp:include page="<%=path%>"/>
+            <%}%>
         </main>
 
         <footer class="footer mt-auto py-3 bg-dark">
