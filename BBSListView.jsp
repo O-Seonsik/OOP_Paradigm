@@ -17,7 +17,10 @@
             <th scope="col">rent</th>
             <th scope="col">rent_num</th>
             <c:if test="${param.SORT eq 2}">
-                <td>rented By</td>
+                <th scope="col">rented By</th>
+            </c:if>
+            <c:if test="${param.RETURN eq true}">
+                <th scope="col">return</th>
             </c:if>
         </tr>
     </thead>
