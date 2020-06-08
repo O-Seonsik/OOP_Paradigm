@@ -14,11 +14,11 @@
 <table  class="table table-striped">
     <thead>
         <tr>
-            <th scope="col">id</th>
-            <th scope="col">name</th>
-            <th scope="col">stu_num</th>
-            <th scope="col">phone</th>
-            <th scope="col">mail</th>
+            <th scope="col">아이디</th>
+            <th scope="col">이름</th>
+            <th scope="col">학번</th>
+            <th scope="col">휴대전화</th>
+            <th scope="col">e-mail</th>
         </tr>
     </thead>
     <c:if test="${MEMBER_INFO.listSize ne 0}">

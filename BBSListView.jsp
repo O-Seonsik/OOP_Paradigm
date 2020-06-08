@@ -17,16 +17,16 @@
     <thead>
         <tr>
             <th scope="col">id</th>
-            <th scope="col">name</th>
-            <th scope="col">writer</th>
-            <th scope="col">price</th>
-            <th scope="col">rent</th>
-            <th scope="col">rent_num</th>
+            <th scope="col">이름</th>
+            <th scope="col">저자</th>
+            <th scope="col">가격</th>
+            <th scope="col">대여가능 여부</th>
+            <th scope="col">대여횟수</th>
             <c:if test="${param.SORT eq 2}">
-                <th scope="col">rented By</th>
+                <th scope="col">대여자</th>
             </c:if>
             <c:if test="${param.RETURN eq true}">
-                <th scope="col">return</th>
+                <th scope="col">반납하기</th>
             </c:if>
         </tr>
     </thead>
