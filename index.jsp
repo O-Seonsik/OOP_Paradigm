@@ -53,7 +53,77 @@
         </nav>
         <main role="main" class="container" style="margin-top:56px; background:#fff;">
             <% if (strPath.equals("index")){ %>
-                메인
+            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#myCarousel" data-slide-to="1"></li>
+                    <li data-target="#myCarousel" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img">
+                            <img src="https://cdn.pixabay.com/photo/2017/08/07/19/49/library-2607146_960_720.jpg" alt=""></svg>
+                        <div class="container">
+                            <div class="carousel-caption text-left" style="background-color: rgba(0,0,0, 0.2); padding-left: 50px;">
+                                <h1>도서대여 시스템</h1>
+                                <p>회원가입 한 사용자만 이용할 수 있어요.</p>
+                                <p>또한, 도서를 누가 대여했는지 쉽게 확인할 수 있습니다.</p>
+                                <p><a class="btn btn-lg btn-primary" href="https://test.oseonsik.com/library/?path=list?SORT=2" role="button">대여된 책 보러가기</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <svg class="bd-placeholder-img"  width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img">
+                            <img src="https://cdn.pixabay.com/photo/2016/08/24/16/20/books-1617327_1280.jpg" alt=""></svg>
+                        </svg>
+                        <div class="container">
+                            <div class="carousel-caption" style="background-color: rgba(0,0,0, 0.4);">
+                                <h1>쉬운 회원관리</h1>
+                                <p>회원 리스트를 통해 회원들의 정보를 빠르고 쉽게 찾을 수 있습니다.</p>
+                                <p><a class="btn btn-lg btn-primary" href="https://test.oseonsik.com/library/?path=MemberInfo" role="button">회원리스트 보러가기</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img">
+                            <img src="https://cdn.pixabay.com/photo/2017/08/06/22/01/books-2596809_1280.jpg" alt=""></svg>
+                        </svg>
+                        <div class="container">
+                            <div class="carousel-caption text-right" style="background-color: rgba(0,0,0, 0.3); padding-right: 50px;">
+                                <h1>도서반납</h1>
+                                <p>도서를 빌린 사람만이 반납을 할 수 있는게 맞습니다.<br> 따라서 로그인 한 사용자만이 대여된 책을 직접 반납합니다.</p>
+                                <p><a class="btn btn-lg btn-primary" href="https://test.oseonsik.com/library/?path=list?SORT=2&RETURN=true" role="button">반납하러 가기</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+            <div class="container marketing">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <img class="rounded-circle" width="140" height="140" src="./img/lock.png" />
+                        <h2>암호화</h2>
+                        <p>비밀번호를 평문으로 데이터베이스에 보관하는<br> 방식은 상당히 위험합니다. <br>따라서 SHA256방식으로 암호화하여 <br>데이터베이스에 보관합니다.</p>
+                    </div><!-- /.col-lg-4 -->
+                    <div class="col-lg-4">
+                        <img width="140" height="140" src="./img/document.png" />
+                        <h2>SSL</h2>
+                        <p>기존의 http 통신보다 보안이 한층 강화된 <br>인증서를 사용한 https통신을 활용하여 <br>보안성을 높였습니다.</p>
+                    </div>
+                    <div class="col-lg-4">
+                        <img style="width:140px; height: 140px;"src="./img/monitor.png" />
+                        <h2>반응형 웹</h2>
+                        <p>모바일 기기에서도 혹은 화면이 태블릿에서<br> 또한, 화면크기가 작은 데스크탑 역시<br> 최적의 UI를 제공해 사용성을 향상시켰습니다.</p>
+                    </div>
+                </div>
             <%}else{%>
                 <jsp:include page="<%=strPath%>"/>
             <%}%>
