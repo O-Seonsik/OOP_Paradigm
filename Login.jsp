@@ -2,8 +2,8 @@
 <html>
     <head>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-        <title>로그인 화면입니다.</title>
         <link rel="stylesheet" href="/library/style/login.css">
+        <title>로그인 화면입니다.</title>
     </head>
     <body class="text-center">
         <form class="form-signin" action="login" method="post" onsubmit="return checkParameter()">
