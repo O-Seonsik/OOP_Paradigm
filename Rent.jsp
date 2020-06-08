@@ -1,19 +1,7 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: 5linesys
-  Date: 2020/06/06
-  Time: 3:56 오후
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-    <head>
-        <title>Title</title>
-    </head>
-    <body>
-        <form action="rent" method="get">
-            대여할 책 ID를 입력하세요: <input type="text" name = "ID">
-            <input type="submit" value="확인">
-        </form>
-    </body>
-</html>
+<form class="form-signin" action="rent" method="get">
+    <h1 class="h3 mb-3 font-weight-normal">도서 대여</h1>
+    <label for="ID" class="sr-only">Book Title</label>
+    <input class="form-control"  type="text" name = "ID" id="ID" placeholder="대여할 책 ID를 입력하세요" required autofocus>
+    <input class="btn btn-lg btn-primary btn-block bg-dark" style=" margin-top: 10px; width: 30%; float: right;" type="submit" value="확인">
+</form>

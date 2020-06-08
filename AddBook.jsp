@@ -1,36 +1,13 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: 5linesys
-  Date: 2020/06/07
-  Time: 12:53 오전
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-    <head>
-        <title>추가 하기</title>
-    </head>
-    <body>
-        <form action="add" method="post">
-            <table>
-                <tr>
-                    <td>ID</td>
-                    <td><input type="text" name="ID"></td>
-                </tr>
-                <tr>
-                    <td>이름</td>
-                    <td><input type="text" name="NAME"></td>
-                </tr>
-                <tr>
-                    <td>저자</td>
-                    <td><input type="text" name="WRITER"></td>
-                </tr>
-                <tr>
-                    <td>가격</td>
-                    <td><input type="text" name="PRICE"></td>
-                </tr>
-                <td><input type="submit" value="저장"></td>
-            </table>
-        </form>
-    </body>
-</html>
+<form class="form-signin"  action="add" method="post">
+    <h1 class="h3 mb-3 font-weight-normal">도서 추가</h1>
+    <label for="ID" class="sr-only">Book ID</label>
+    <input class="form-control" placeholder="도서 ID" type="text" name="ID" id="ID" required autofocus>
+    <label for="NAME" class="sr-only">Book Title</label>
+    <input class="form-control" placeholder="도서 제목" type="text" name="NAME" id="NAME" required>
+    <label for="WRITER" class="sr-only">Book Writer</label>
+    <input class="form-control" placeholder="저자" type="text" name="WRITER" id="WRITER" required>
+    <label for="PRICE" class="sr-only">Book Price</label>
+    <input  class="form-control" placeholder="도서 가격" type="text" name="PRICE" id="PRICE" required>
+    <input class="btn btn-lg btn-primary btn-block bg-dark" style=" margin-top: 10px; width: 30%; float: right;" type="submit" value="저장">
+</form>
