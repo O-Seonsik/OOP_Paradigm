@@ -8,6 +8,7 @@
     </head>
     <body class="text-center">
         <form class="form-signin" action="join" method="POST" onsubmit="return checkJoin()">
+            <h1 class="h1 md-1 font-weight-bold" style="background: #343A40; display: block; height:60px; width:100px; line-height: 60px; margin: 0 auto; color: white">책방</h1>
             <h1 class="h3 mb-3 font-weight-normal">Welcome!</h1>
             <label for="ID" class="sr-only">ID</label>
             <input class="form-control" type="text" placeholder="아이디" name="ID" id="ID" required autofocus>
