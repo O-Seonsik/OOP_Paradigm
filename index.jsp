@@ -30,6 +30,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="/library/?path=AddBook.jsp">추가</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="?path=MemberInfo">회원 리스트</a>
+                        </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">정렬</a>
                             <div class="dropdown-menu" aria-labelledby="dropdown01">
@@ -39,9 +42,7 @@
                             </div>
                         </li>
                     </ul>
-                    <a href="?path=MemberInfo">회원 리스트</a>
-                    <a href="/library/Join.jsp">회원가입</a>
-                    <a href="/library/Logout.jsp">로그아웃</a>
+                    <a id="logout" href="/library/Logout.jsp">로그아웃</a>
                 </div>
             </div>
         </nav>
