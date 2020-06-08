@@ -27,6 +27,7 @@ public class LoginCheckFilter implements Filter {
         String uri = request.getRequestURI().toString().trim();
         if (uri.startsWith("/library/Login.jsp") || uri.startsWith("/library/login")) return true;
         if (uri.startsWith("/library/Join.jsp") || uri.startsWith("/library/join")) return true;
+        if (uri.startsWith("/library/style/login.css")) return true;
         else return false;
     }
 }

@@ -1,18 +1,29 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
     <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <link rel="stylesheet" href="/library/style/login.css">
         <title>회원가입</title>
     </head>
-    <body>
-        <form action="join" method="POST">
-            아이디: <input type="text" placeholder="아이디" name="ID" id="ID"> <br>
-            이름: <input type="text" placeholder="이름" name="NAME" id="NAME"> <br>
-            비밀번호: <input type="password" placeholder="비밀번호" name="PASSWORD" id="PASSWORD"> <br>
-            비밀번호 확인: <input type="password" placeholder="비밀번호 확인" name="confirmPW" id="confirmPW"> <br>
-            학번: <input type="text" placeholder="학번" name="STU_NUM" id="STU_NUM"> <br>
-            휴대전화: <input type="text" placeholder="휴대전화" name="PHONE" id="PHONE"> <br>
-            e-mail: <input type="text" placeholder="이메일" name="MAIL" id="MAIL"> <br>
-            <input type="submit" value="회원가입">
+    <body class="text-center">
+        <form class="form-signin" action="join" method="POST">
+            <h1 class="h3 mb-3 font-weight-normal">Welcome!</h1>
+            <label for="ID" class="sr-only">ID</label>
+            <input class="form-control" type="text" placeholder="아이디" name="ID" id="ID" required autofocus>
+            <label for="NAME" class="sr-only">Name</label>
+            <input class="form-control" type="text" placeholder="이름" name="NAME" id="NAME" required>
+            <label for="PASSWORD" class="sr-only">Password</label>
+            <input class="form-control" type="password" placeholder="비밀번호" name="PASSWORD" id="PASSWORD" required>
+            <label for="confirmPW" class="sr-only">Confirm</label>
+            <input class="form-control" type="password" placeholder="비밀번호 확인" name="confirmPW" id="confirmPW" required>
+            <label for="STU_NUM" class="sr-only">Student Number</label>
+            <input class="form-control" type="text" placeholder="학번" name="STU_NUM" id="STU_NUM" required>
+            <label for="PHONE" class="sr-only">Phone number</label>
+            <input class="form-control" type="tel" placeholder="휴대전화" name="PHONE" id="PHONE" required>
+            <label for="MAIL" class="sr-only">Email address</label>
+            <input class="form-control" type="email" placeholder="이메일" name="MAIL" id="MAIL" required>
+
+            <input style="margin-top: 10px;" class="btn btn-lg btn-primary btn-block" type="submit" value="회원가입">
         </form>
     </body>
     <script>
@@ -27,28 +38,5 @@
         <% }else if(code.equals("3")){ %>
             alert("알수없는 오류로 회원가입에 실패했습니다.")
         <% } %>
-        const checkParameter = () => {
-            const ID = document.getElementById("ID").value
-            const NAME = document.getElementById("NAME").value
-            const PW = document.getElementById("PASSWORD").value
-            const PWC = document.getElementById("confirmPW").value
-            const STU_NUM = document.getElementById("STU_NUM").value
-            const PHONE = document.getElementById("PHONE").value
-            const MAIL = document.getElementById("MAIL").value
-
-            if(!ID || !NAME || !PW || !PWC || PW != PWC || STU_NUM || PHONE || MAIL) {
-                if (!ID) alert("아이디를 입력하세요")
-                else if (!NAME) alert("이름을 입력하세요")
-                else if (!PW) alert("비밀번호를 입력하세요")
-                else if (!PWC) alert("비밀번호 확인을 입력하세요")
-                else if(!STU_NUM) alert("학번을 입력하세요")
-                else if(!PHONE) alert("휴대전화 번호를 입력하세요")
-                else if(!MAIL) alert("이메일 주소를 입력하세요")
-                else if (PW != PWC) alert("비밀번호와, 비밀번호 확인이 다릅니다.")
-                return false;
-            }
-
-            return true;
-        }
     </script>
 </html>
