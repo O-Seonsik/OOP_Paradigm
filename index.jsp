@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="style/index.css">
         <title>도서관리 시스템</title>
     </head>
-    <body>
+    <body class="d-flex flex-column h-100">
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
             <div class="container">
                 <a class="navbar-brand" href="#">책방</a>
@@ -48,6 +48,12 @@
         <main role="main" class="container" style="margin-top:56px; background:#fff;">
             <jsp:include page="<%=path%>"/>
         </main>
+
+        <footer class="footer mt-auto py-3 bg-dark">
+            <div class="container">
+                <span class="text-muted">Place sticky footer content here.</span>
+            </div>
+        </footer>
     </body>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
