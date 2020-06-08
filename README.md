@@ -15,7 +15,7 @@
 - CSS
 - BOOTSTRAP
 - Docker
-- python(DB에 을 채우기 위해)
+- python(DB에 데이터를 채우기 위해)
 
 ## DB 구조
 - ### 회원관리 
@@ -29,10 +29,10 @@
      | passwd    | varchar(65) | NO   |     | NULL    |                |
      | stu_num   | int         | NO   |     | NULL    |                |
      | phone     | varchar(45) | NO   |     | NULL    |                |
-     | mail      | varchar(45) | NO   |     | NULL    |                |값
+     | mail      | varchar(45) | NO   |     | NULL    |                |
      
 - ### 도서관리
-  - Purpose: 보관중인 도서를 저장하기 위
+  - Purpose: 보관중인 도서를 저장하기 위함
   - Table name: booksinfo
   - | Field    | Type         | Null | Key | Default | Extra          |
     |:---------|:-------------|:-----|:----|:--------|:---------------|
