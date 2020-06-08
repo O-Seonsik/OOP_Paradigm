@@ -9,11 +9,15 @@ import java.sql.*;
 public class InfoListServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         String userId = request.getParameter("USERID");
+        String strPage = request.getParameter("PAGE");
         String url;
         InfoList list;
+        int page, sort;
+        if(strPage == null || strPage == "") page = 1;
+        else page = Integer.parseInt(strPage);
 
         if(userId == "" || userId == null) {
-            list = getList();
+            list = getList(page);
             url = "?path=MemberListView.jsp";
         }else {
             list = getOne(userId);
@@ -50,13 +54,36 @@ public class InfoListServlet extends HttpServlet {
         return list;
     }
 
-    private InfoList getList() throws ServletException{
+    private InfoList getList(int page) throws ServletException{
         InfoList list = new InfoList();
         DBConnect dbConnect = new DBConnect();
         Connection conn = dbConnect.getConn();
         Statement stmt = dbConnect.getStmt();
         try{
-            ResultSet rs = stmt.executeQuery("SELECT user_name, user_id, stu_num, phone, mail FROM members");
+            ResultSet rs = stmt.executeQuery("SELECT COUNT(*) AS COUNT FROM members");
+            if(page >= 10) list.setButton(0, true);
+            else list.setButton(0, false);
+            if(rs.next()){
+                int total = rs.getInt("COUNT");
+                if(total%10 == 0) total /= 10;
+                else total = total/10 + 1;
+
+                int pageIndex = page;
+                int MAXINDEX = 10;
+                if(pageIndex < 10){
+                    pageIndex = 1;
+                    MAXINDEX = 9;
+                }
+                else pageIndex = pageIndex / 10 * 10;
+
+                for(int i = pageIndex; i < pageIndex + MAXINDEX; i++){
+                    if(i > total) break;
+                    list.setPage(i-pageIndex, i);
+                }
+                if(pageIndex + MAXINDEX <= total) list.setButton(1, true);
+                else list.setButton(1, false);
+            }
+            rs = stmt.executeQuery("SELECT user_name, user_id, stu_num, phone, mail FROM members ORDER BY id ASC LIMIT " + (page-1)*10 + ", " + 10);
             int index = 0;
             while(rs.next()){
                 list.setId(index, rs.getString("user_id"));
