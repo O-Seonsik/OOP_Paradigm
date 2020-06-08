@@ -5,7 +5,7 @@
 - Server: Tomcat(Docker)
 - DB: MySQL(Docker)
 - SSL: letsencrypt
-- URL: https://test.oseonsik.com/library (id:test/pw:1234)
+- URL: https://test.oseonsik.com/library
 
 ## 기술스택
 - Apache Tomcat/8.5.53
@@ -14,7 +14,7 @@
 - JavaScript
 - CSS
 - Docker
-- python(DB해 내용을 채우기 위해)
+- python(DB에 을 채우기 위해)
 
 ## DB 구조
 - ### 회원관리 
@@ -28,7 +28,8 @@
      | passwd    | varchar(65) | NO   |     | NULL    |                |
      | stu_num   | int         | NO   |     | NULL    |                |
      | phone     | varchar(45) | NO   |     | NULL    |                |
-     | mail      | varchar(45) | NO   |     | NULL    |                |
+     | mail      | varchar(45) | NO   |     | NULL    |                |값
+     
 - ### 도서관리
   - Purpose: 보관중인 도서를 저장하기 위
   - Table name: booksinfo
