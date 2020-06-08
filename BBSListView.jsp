@@ -10,7 +10,7 @@
     if(strPage != "" && strPage != null) pageNum = Integer.parseInt(strPage);
     pageContext.setAttribute("pageNum", pageNum);
 %>
-<h4>도서관리 시스템</h4>
+<h1 class="h3 mb-3 font-weight-normal">도서관리 시스템</h1>
 <table  class="table table-striped">
     <thead>
         <tr>
