@@ -8,6 +8,7 @@ import java.sql.*;
 public class BBSRentServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
         String rentId = request.getParameter("ID");
+        String userId = request.getParameter("USERID");
         if(rentId == null || rentId == "") response.sendRedirect("/library?path=RentDone.jsp?DONE=NO");
         else{
             DBConnect dbConnect = new DBConnect();
@@ -17,7 +18,7 @@ public class BBSRentServlet extends HttpServlet {
                 ResultSet rs = stmt.executeQuery("SELECT rent FROM booksinfo WHERE id = " + rentId);
                 boolean rentStat = false;
                 if(rs.next() && rs.getBoolean("rent")){
-                    stmt.executeUpdate(" UPDATE booksinfo SET rent_num = rent_num+1, rent = !rent WHERE id = " + rentId);
+                    stmt.executeUpdate(" UPDATE booksinfo SET rent_num = rent_num+1, rent = !rent,  rent_by = '" + userId + "' WHERE id = " + rentId);
                     response.sendRedirect("/library?path=RentDone.jsp?DONE=OK");
                 } else response.sendRedirect("/library?path=RentDone.jsp?DONE=NO");
             }catch(Exception e){
