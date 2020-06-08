@@ -60,8 +60,10 @@
         </main>
 
         <footer class="footer mt-auto py-3 bg-dark">
-            <div class="container">
-                <span class="text-muted">Place sticky footer content here.</span>
+            <div class="container" style="text-align: center">
+                <span class="text-muted">About: 2020 가톨릭대학교 객체지향 패러다임 개인 프로젝트</span><br>
+                <span class="text-muted">Contact me: dhtjstlr777@gmail.com</span><br>
+                <span class="text-muted">Copyrightⓒ 2020 O's All rights reserved.</span><br>
             </div>
         </footer>
     </body>
