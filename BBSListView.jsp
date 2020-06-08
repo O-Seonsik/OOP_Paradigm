@@ -9,6 +9,8 @@
     int pageNum = 1;
     if(strPage != "" && strPage != null) pageNum = Integer.parseInt(strPage);
     pageContext.setAttribute("pageNum", pageNum);
+    String loginId = (String)session.getAttribute("ID");
+    pageContext.setAttribute("loginId", loginId);
 %>
 <h1 class="h3 mb-3 font-weight-normal">도서관리 시스템</h1>
 <table  class="table table-striped">
@@ -49,8 +51,13 @@
                 <td><a href="?path=MemberInfo?USERID=${BBS_LIST.rentBy[cnt]}">${BBS_LIST.rentBy[cnt]}</a></td>
             </c:if>
             <% if(!(res==null || res=="")){ %>
-            <td><a href="/library/return?ID=${BBS_LIST.id[cnt]}">반납</a></td>
-            <% } %>
+            <c:if test = "${pageScope.loginId eq BBS_LIST.rentBy[cnt]}">
+                <td><a href="/library/return?ID=${BBS_LIST.id[cnt]}">반납</a></td>
+            </c:if>
+            <c:if test = "${pageScope.loginId ne BBS_LIST.rentBy[cnt]}">
+                <td></td>
+            </c:if>
+            <% }%>
         </tr>
     </c:forEach>
 </table>
