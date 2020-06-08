@@ -1,7 +1,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
-    String path = (String)request.getParameter("path");
-    if(path==null || path=="") path = "index";
+    String strPath = (String)request.getParameter("path");
+    if(strPath==null || strPath=="") strPath = "index";
+    String strSort = (String)request.getParameter("SORT");
+    int sort = 0;
+    if(strSort != "" && strSort != null) sort = Integer.parseInt(strSort);
+    String returnVal = (String)request.getParameter("RETURN");
+    if(returnVal == "" || returnVal == null) returnVal = "";
 %>
 <html>
     <head>
@@ -18,23 +23,23 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarsExampleDefault">
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item active">
+                        <li class="nav-item <%if(strPath.equals("BBSListView.jsp") && sort == 0) out.println("active");%>">
                             <a class="nav-link" href="/library/?path=list">목록<span class="sr-only">(current)</span></a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item <%if(strPath.equals("Rent.jsp")) out.println("active");%>">
                             <a class="nav-link" href="/library/?path=Rent.jsp">대여</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item <%if(strPath.equals("BBSListView.jsp") && sort == 2 && returnVal.equals("true")) out.println("active");%>">
                             <a class="nav-link" href="/library/?path=list?SORT=2&RETURN=true">반납</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item <%if(strPath.equals("AddBook.jsp")) out.println("active");%>">
                             <a class="nav-link" href="/library/?path=AddBook.jsp">추가</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="?path=MemberInfo">회원 리스트</a>
+                            <a class="nav-link <%if(strPath.equals("MemberListView.jsp")) out.println("active");%>" href="?path=MemberInfo">회원 리스트</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">정렬</a>
+                            <a class="nav-link dropdown-toggle <%if(strPath.equals("BBSListView.jsp") && sort != 0 && !returnVal.equals("true")) out.println("active");%>" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">정렬</a>
                             <div class="dropdown-menu" aria-labelledby="dropdown01">
                                 <a class="dropdown-item" href="/library/?path=list?SORT=1">대여량 기준</a>
                                 <a class="dropdown-item" href="/library/?path=list?SORT=2">대여된 책</a>
@@ -47,10 +52,10 @@
             </div>
         </nav>
         <main role="main" class="container" style="margin-top:56px; background:#fff;">
-            <% if (path.equals("index")){ %>
+            <% if (strPath.equals("index")){ %>
                 메인
             <%}else{%>
-                <jsp:include page="<%=path%>"/>
+                <jsp:include page="<%=strPath%>"/>
             <%}%>
         </main>
 
