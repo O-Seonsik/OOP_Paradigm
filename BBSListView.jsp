@@ -47,8 +47,7 @@
         </tr>
     </c:forEach>
 </table>
-
-<div class="btn-toolbar mb-3" style="margin: 0 auto" role="toolbar" aria-label="Toolbar with button groups">
+<div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
     <div class="btn-group mr-2" role="group" aria-label="First group">
         <c:if test = "${BBS_LIST.button[0]}">
             <button type="button" class="btn btn-secondary" onclick="location='/library/?path=list?SORT=${param.SORT}&PAGE=${BBS_LIST.page[0]-1}&RETURN=${param.RETURN}'">◀</button>
@@ -61,7 +60,6 @@
             <c:set var="test" value="<%=pageSize%>" />
             <button type="button" class="btn btn-secondary" onclick="location='/library/?path=list?SORT=${param.SORT}&PAGE=${BBS_LIST.page[test-1]+1}&RETURN=${param.RETURN}'">▶</button>
         </c:if>
-
     </div>
 </div>
 
