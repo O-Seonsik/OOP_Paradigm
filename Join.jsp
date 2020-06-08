@@ -23,7 +23,7 @@
             <label for="MAIL" class="sr-only">Email address</label>
             <input class="form-control" type="email" placeholder="이메일" name="MAIL" id="MAIL" required>
 
-            <input style="margin-top: 10px;" class="btn btn-lg btn-primary btn-block" type="submit" value="회원가입">
+            <input style="margin-top: 10px;" class="btn btn-lg btn-primary btn-block bg-dark" type="submit" value="회원가입">
         </form>
     </body>
     <script>

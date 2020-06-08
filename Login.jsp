@@ -12,8 +12,8 @@
             <input class="form-control" placeholder="ID" type="text" name="ID" id="ID" required autofocus>
             <label for="password" class="sr-only">Password</label>
             <input class="form-control" placeholder="Password" type="password" name="PASSWORD" id="PASSWORD" required>
-            <button style="margin-top:10px" class="btn btn-lg btn-primary btn-block" type="submit">로그인</button>
-            <a class="btn btn-lg btn-primary btn-block" href="Join.jsp">회원가입</a>
+            <button style="margin-top:10px" class="btn btn-lg btn-primary btn-block bg-dark" type="submit">로그인</button>
+            <a class="btn btn-lg btn-primary btn-block bg-dark" href="Join.jsp">회원가입</a>
         </form>
     </body>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
