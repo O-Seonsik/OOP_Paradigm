@@ -5,6 +5,10 @@
     BBSList list = (BBSList)request.getAttribute("BBS_LIST");
     int pageSize = list.getPage().length;
     String res = (String)request.getAttribute("RETURN");
+    String strPage = (String)request.getParameter("PAGE");
+    int pageNum = 1;
+    if(strPage != "" && strPage != null) pageNum = Integer.parseInt(strPage);
+    pageContext.setAttribute("pageNum", pageNum);
 %>
 <h4>도서관리 시스템</h4>
 <table  class="table table-striped">
@@ -56,7 +60,13 @@
             <button type="button" class="btn btn-secondary" onclick="location='/library/?path=list?SORT=${param.SORT}&PAGE=${BBS_LIST.page[0]-1}&RETURN=${param.RETURN}'">◀</button>
         </c:if>
         <c:forEach var="cnt" begin="0" end="<%=pageSize-1%>">
-            <button type="button" class="btn btn-secondary" onclick="location='/library/?path=list?SORT=${param.SORT}&PAGE=${BBS_LIST.page[cnt]}&RETURN=${param.RETURN}'">${BBS_LIST.page[cnt]}</button>
+
+            <c:if test="${pageScope.pageNum eq BBS_LIST.page[cnt]}">
+                <button type="button" class="btn btn-secondary active" onclick="location='/library/?path=list?SORT=${param.SORT}&PAGE=${BBS_LIST.page[cnt]}&RETURN=${param.RETURN}'">${BBS_LIST.page[cnt]}</button>
+            </c:if>
+            <c:if test="${pageScope.pageNum ne BBS_LIST.page[cnt]}">
+                <button type="button" class="btn btn-secondary" onclick="location='/library/?path=list?SORT=${param.SORT}&PAGE=${BBS_LIST.page[cnt]}&RETURN=${param.RETURN}'">${BBS_LIST.page[cnt]}</button>
+            </c:if>
         </c:forEach>
         <%}%>
         <c:if test = "${BBS_LIST.button[1]}">
