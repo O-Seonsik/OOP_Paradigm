@@ -13,6 +13,7 @@
 - HTML
 - JavaScript
 - CSS
+- BOOTSTRAP
 - Docker
 - python(DB에 을 채우기 위해)
 
