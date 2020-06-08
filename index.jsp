@@ -138,6 +138,27 @@
             </div>
         </footer>
     </body>
+    <script>
+        const checkBlank = (value) => {
+            let blank_pattern = /^\s+|\s+$/g;
+            if (value.replace(blank_pattern, "") == "") {
+                alert("공백 문자는 사용할 수 없습니다.");
+                return false;
+            }
+            return true;
+        };
+
+        const checkSpecial = (value) => {
+            let special_pattern = /[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/gi;
+            if (special_pattern.test(value) == true) return false;
+            return true;
+        };
+
+        const checkInteger = (value) => {
+            if (!(/^(\-|\+)?([0-9]+)$/.test(value) && parseInt(value) > 0)) return false;
+            return true;
+        };
+    </script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>

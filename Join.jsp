@@ -7,7 +7,7 @@
         <title>회원가입</title>
     </head>
     <body class="text-center">
-        <form class="form-signin" action="join" method="POST">
+        <form class="form-signin" action="join" method="POST" onsubmit="return checkJoin()">
             <h1 class="h3 mb-3 font-weight-normal">Welcome!</h1>
             <label for="ID" class="sr-only">ID</label>
             <input class="form-control" type="text" placeholder="아이디" name="ID" id="ID" required autofocus>
@@ -28,6 +28,51 @@
         </form>
     </body>
     <script>
+        const checkBlank = (value) => {
+            let blank_pattern = /^\s+|\s+$/g;
+            if (value.replace(blank_pattern, "") == "") {
+                alert("공백 문자는 사용할 수 없습니다.");
+                return false;
+            }
+            return true;
+        };
+
+        const checkSpecial = (value) => {
+            let special_pattern = /[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/gi;
+            if (special_pattern.test(value) == true) return false;
+            return true;
+        };
+
+        const checkInteger = (value) => {
+            if (!(/^(\-|\+)?([0-9]+)$/.test(value) && parseInt(value) > 0)) return false;
+            return true;
+        };
+
+        const checkJoin = () => {
+            const id = document.getElementById("ID").value;
+            const name = document.getElementById("NAME").value;
+            const password = document.getElementById("PASSWORD").value;
+            const confirm = document.getElementById("confirmPW").value;
+            const stuNum = document.getElementById("STU_NUM").value;
+            const phone = document.getElementById("PHONE").value;
+            const mail = document.getElementById("MAIL").value;
+            if(!checkSpecial(id)){
+                alert("아이디에 특수문자를 사용할 수 없습니다.");
+                return false;
+            }
+            if(!checkSpecial(name)){
+                alert("이름에 특수문자를 사용할 수 없습니다.")
+                return false;
+            }
+            if(!checkBlank(password)) return false;
+            if(!checkBlank(confirm)) return false;
+            if(!checkInteger(stuNum)){
+                alert("학번에는 0이상의 정수만 입력 가능합니다.")
+                return false;
+            }
+            if(!checkBlank(phone)) return false;
+            if(!checkBlank(mail)) return false;
+        }
         <%
             String code = request.getParameter("ERROR");
             if(code == null) code ="0";
