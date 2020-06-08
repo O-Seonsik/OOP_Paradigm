@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<h1 class="h3 mb-3 font-weight-normal">회원 리스트</h1>
 <table  class="table table-striped">
     <thead>
         <tr>
