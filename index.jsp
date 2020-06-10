@@ -47,9 +47,9 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle <%if(strPath.equals("BBSListView.jsp") && sort != 0 && !returnVal.equals("true")) out.println("active");%>" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">정렬</a>
                             <div class="dropdown-menu" aria-labelledby="dropdown01">
-                                <a class="dropdown-item" href="/library/?path=list?SORT=1">대여량 기준</a>
-                                <a class="dropdown-item" href="/library/?path=list?SORT=2">대여된 책</a>
-                                <a class="dropdown-item" href="/library/?path=list?SORT=3">대여 가능한 책</a>
+                                <a class="dropdown-item <%if(strPath.equals("BBSListView.jsp") && sort == 1) out.println("bg-dark active");%>" href="/library/?path=list?SORT=1">대여량 기준</a>
+                                <a class="dropdown-item <%if(strPath.equals("BBSListView.jsp") && sort == 2 && !returnVal.equals("true")) out.println("bg-dark active");%>" href="/library/?path=list?SORT=2">대여된 책</a>
+                                <a class="dropdown-item <%if(strPath.equals("BBSListView.jsp") && sort == 3) out.println("bg-dark active");%>" href="/library/?path=list?SORT=3">대여 가능한 책</a>
                             </div>
                         </li>
                     </ul>
@@ -128,6 +128,21 @@
                         <img style="width:140px; height: 140px;"src="./img/monitor.png" />
                         <h2>반응형 웹</h2>
                         <p>모바일 기기에서도 혹은 화면이 태블릿에서<br> 또한, 화면크기가 작은 데스크탑 역시<br> 최적의 UI를 제공해 사용성을 향상시켰습니다.</p>
+                    </div>
+                    <div class="col-lg-4">
+                        <img style="width:140px; height: 140px;"src="./img/shield.png" />
+                        <h2>XSS</h2>
+                        <p>사용자의 모든 데이터 입력 중<br> 불순한 의도가 보이는 문장은 정규식을 통해<br> 사전에 차단되어 보안성을 높였습니다.</p>
+                    </div>
+                    <div class="col-lg-4">
+                        <img style="width:140px; height: 140px;"src="./img/injection.png" />
+                        <h2>SQL Injection</h2>
+                        <p>Prepared Statement를 통해 SQL문을<br> DB에 전달하기 전 미리 컴파일하여<br> SQL Injection으로 부터 사용자의 <br> 데이터를 안전하게 지켜냅니다.</p>
+                    </div>
+                    <div class="col-lg-4">
+                        <img style="width:140px; height: 140px;"src="./img/member.png" />
+                        <h2>회원가입 제도</h2>
+                        <p>로그인한 사용자만 사용 가능한 제약을 통해<br> 도서의 정확한 추적을 도와 사이트의<br> 운영에 안정성과 사용성을 향상시켰습니다.</p>
                     </div>
                 </div>
             <%}else{%>
