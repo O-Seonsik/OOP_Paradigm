@@ -37,7 +37,7 @@
                             <a class="nav-link" href="/library/?path=AddBook.jsp">추가</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link <%if(strPath.equals("MemberListView.jsp")) out.println("active");%>" href="?path=MemberInfo">회원 리스트</a>
+                            <a class="nav-link <%if(strPath.equals("MemberListView.jsp")) out.println("active");%>" href="MemberInfo">회원 리스트</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle <%if(strPath.equals("BBSListView.jsp") && sort != 0 && !returnVal.equals("true")) out.println("active");%>" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">정렬</a>

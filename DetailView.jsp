@@ -11,7 +11,6 @@
     String get = (String)request.getAttribute("GET");
     String loginId = (String)session.getAttribute("ID");
     pageContext.setAttribute("loginId", loginId);
-    out.println(get);
 %>
 <div class="container marketing">
     <div class="jumbotron mt-3">
@@ -34,3 +33,9 @@
         </c:if>
     </div>
 </div>
+
+<script>
+    window.onpageshow = (event) => {
+        if ( event.persisted || (window.performance && window.performance.navigation.type == 2)) location.reload();
+    }
+</script>
