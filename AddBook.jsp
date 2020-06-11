@@ -30,6 +30,15 @@
             alert("가격은 0이상의 정수만 입력 가능합니다.")
             return false;
         }
+        if(id.length > 5){
+            alert("id는 5자리 이하입니다.")
+            return false;
+        }
+
+        if(price.length > 6){
+            alert("가격은 6자리 이하입니다.")
+            return false;
+        }
         return true;
     }
 
