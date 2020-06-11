@@ -56,6 +56,14 @@
         <servlet-name>member-info-servlet</servlet-name>
         <url-pattern>/MemberInfo</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>detail-view-servlet</servlet-name>
+        <servlet-class>BBS.BookDetail</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>detail-view-servlet</servlet-name>
+        <url-pattern>/DetailView</url-pattern>
+    </servlet-mapping>
     <filter>
         <filter-name>login-check-filter</filter-name>
         <filter-class>filter.LoginCheckFilter</filter-class>

@@ -69,7 +69,7 @@
         <c:forEach var="cnt" begin="0" end="${BBS_LIST.listSize-1}">
             <tr>
                 <td>${BBS_LIST.id[cnt]}</td>
-                <td>${BBS_LIST.name[cnt]}</td>
+                <td><a style="color: black; text-decoration: none; font-weight: bold;" href="?path=DetailView?GET=${BBS_LIST.id[cnt]}">${BBS_LIST.name[cnt]}</a></td>
                 <td>${BBS_LIST.writer[cnt]}</td>
                 <td>${BBS_LIST.price[cnt]}</td>
                 <td>
