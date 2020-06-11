@@ -10,3 +10,9 @@
     <input style="display: none;" type="text" name = "USERID" value="${pageScope.loginId}">
     <input class="btn btn-lg btn-primary btn-block bg-dark" style=" margin-top: 10px; width: 30%; float: right;" type="submit" value="확인">
 </form>
+
+<script>
+    window.onpageshow = (event) => {
+        if ( event.persisted || (window.performance && window.performance.navigation.type == 2)) location.reload();
+    }
+</script>

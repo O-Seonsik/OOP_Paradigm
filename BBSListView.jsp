@@ -48,53 +48,54 @@
     </c:forEach>
 </div>
 
-
-<table id="table" class="table table-striped">
-    <thead>
-        <tr>
-            <th scope="col">id</th>
-            <th scope="col">이름</th>
-            <th scope="col">저자</th>
-            <th scope="col">가격</th>
-            <th scope="col">대여가능 여부</th>
-            <th scope="col">대여횟수</th>
-            <c:if test="${param.SORT eq 2}">
-                <th scope="col">대여자</th>
-            </c:if>
-            <c:if test="${param.RETURN eq true}">
-                <th scope="col">반납하기</th>
-            </c:if>
-        </tr>
-    </thead>
-    <c:forEach var="cnt" begin="0" end="${BBS_LIST.listSize-1}">
-        <tr>
-            <td>${BBS_LIST.id[cnt]}</td>
-            <td>${BBS_LIST.name[cnt]}</td>
-            <td>${BBS_LIST.writer[cnt]}</td>
-            <td>${BBS_LIST.price[cnt]}</td>
-            <td>
-                <c:if test="${BBS_LIST.rent[cnt]}">
-                    T
+<div id ="table">
+    <table  class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">id</th>
+                <th scope="col">이름</th>
+                <th scope="col">저자</th>
+                <th scope="col">가격</th>
+                <th scope="col">대여가능 여부</th>
+                <th scope="col">대여횟수</th>
+                <c:if test="${param.SORT eq 2}">
+                    <th scope="col">대여자</th>
                 </c:if>
-                <c:if test="${!BBS_LIST.rent[cnt]}">
-                    F
+                <c:if test="${param.RETURN eq true}">
+                    <th scope="col">반납하기</th>
                 </c:if>
-            </td>
-            <td>${BBS_LIST.rentNum[cnt]}</td>
-            <c:if test="${param.SORT eq 2}">
-                <td><a href="?path=MemberInfo?USERID=${BBS_LIST.rentBy[cnt]}">${BBS_LIST.rentBy[cnt]}</a></td>
-            </c:if>
-            <% if(!(res==null || res=="")){ %>
-            <c:if test = "${pageScope.loginId eq BBS_LIST.rentBy[cnt]}">
-                <td><a href="/library/return?ID=${BBS_LIST.id[cnt]}">반납</a></td>
-            </c:if>
-            <c:if test = "${pageScope.loginId ne BBS_LIST.rentBy[cnt]}">
-                <td></td>
-            </c:if>
-            <% }%>
-        </tr>
-    </c:forEach>
-</table>
+            </tr>
+        </thead>
+        <c:forEach var="cnt" begin="0" end="${BBS_LIST.listSize-1}">
+            <tr>
+                <td>${BBS_LIST.id[cnt]}</td>
+                <td>${BBS_LIST.name[cnt]}</td>
+                <td>${BBS_LIST.writer[cnt]}</td>
+                <td>${BBS_LIST.price[cnt]}</td>
+                <td>
+                    <c:if test="${BBS_LIST.rent[cnt]}">
+                        T
+                    </c:if>
+                    <c:if test="${!BBS_LIST.rent[cnt]}">
+                        F
+                    </c:if>
+                </td>
+                <td>${BBS_LIST.rentNum[cnt]}</td>
+                <c:if test="${param.SORT eq 2}">
+                    <td><a href="?path=MemberInfo?USERID=${BBS_LIST.rentBy[cnt]}">${BBS_LIST.rentBy[cnt]}</a></td>
+                </c:if>
+                <% if(!(res==null || res=="")){ %>
+                <c:if test = "${pageScope.loginId eq BBS_LIST.rentBy[cnt]}">
+                    <td><a href="/library/return?ID=${BBS_LIST.id[cnt]}">반납</a></td>
+                </c:if>
+                <c:if test = "${pageScope.loginId ne BBS_LIST.rentBy[cnt]}">
+                    <td></td>
+                </c:if>
+                <% }%>
+            </tr>
+        </c:forEach>
+    </table>
+</div>
 <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
     <div class="btn-group mr-2" role="group" aria-label="First group">
         <c:if test = "${BBS_LIST.button[0]}">
@@ -116,11 +117,11 @@
     </div>
 </div>
  <%}else{%>
-    <div style="text-align: center;" class="alert alert-dark" role="alert">
+    <div style="text-align: center;"  class="alert alert-dark" role="alert">
         <span>도서가 없습니다.</span>
     </div>
  <%}%>
-    <script>
+<script>
     const wrapper = document.getElementById('body');
     window.addEventListener("resize", function(){
         if(window.innerWidth < 991){
@@ -137,6 +138,7 @@
         }
     });
     window.onpageshow = (event) => {
+        if ( event.persisted || (window.performance && window.performance.navigation.type == 2)) location.reload();
         if(window.innerWidth < 991){
             const table = document.getElementById("table")
             const mobile = document.getElementById("mobile_table")
