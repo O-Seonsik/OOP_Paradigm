@@ -5,6 +5,9 @@ import java.io.*;
 import java.sql.*;
 
 public class BBSListServlet extends HttpServlet {
+    private Connection conn;
+    private PreparedStatement stmt = null;
+
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
         String strPage = request.getParameter("PAGE");
         String strSort = request.getParameter("SORT");
@@ -27,13 +30,15 @@ public class BBSListServlet extends HttpServlet {
 
     private BBSList readDB(int sort, int page) throws ServletException {
         BBSList list = new BBSList();
-        DBConnect dbConnect = new DBConnect();
-        Connection conn = dbConnect.getConn();
-        Statement stmt = dbConnect.getStmt();
         try{
-            ResultSet rs = stmt.executeQuery("SELECT COUNT(*) AS COUNT FROM booksinfo");
-            if(sort == 2) rs = stmt.executeQuery("SELECT COUNT(*) AS COUNT FROM booksinfo WHERE !rent");
-            else if(sort == 3) rs = stmt.executeQuery("SELECT COUNT(*) AS COUNT FROM booksinfo WHERE rent");
+            DBConnect dbConnect;
+            if(sort == 2) dbConnect = new DBConnect("SELECT COUNT(*) AS COUNT FROM booksinfo WHERE !rent");
+            else if(sort == 3) dbConnect = new DBConnect("SELECT COUNT(*) AS COUNT FROM booksinfo WHERE rent");
+            else dbConnect = new DBConnect("SELECT COUNT(*) AS COUNT FROM booksinfo");
+
+            Connection conn = dbConnect.getConn();
+            PreparedStatement stmt = dbConnect.getPstmt();
+            ResultSet rs = stmt.executeQuery();
             if(page >= 10) list.setButton(0, true);
             else list.setButton(0, false);
             if(rs.next()) {
@@ -57,10 +62,13 @@ public class BBSListServlet extends HttpServlet {
                 else list.setButton(1, false);
             }
 
-            if (sort == 0) rs = stmt.executeQuery("SELECT * FROM booksinfo ORDER BY id ASC LIMIT " + (page-1)*10 + ", " + 10);
-            else if (sort == 1) rs = stmt.executeQuery("SELECT * FROM booksinfo ORDER BY rent_num DESC, id ASC LIMIT " + (page-1)*10 + ", " + 10);
-            else if (sort == 2) rs = stmt.executeQuery("SELECT * FROM booksinfo WHERE !rent ORDER BY id ASC LIMIT " + (page-1)*10 + ", " + 10);
-            else if (sort == 3) rs = stmt.executeQuery("SELECT * FROM booksinfo WHERE rent ORDER BY id ASC LIMIT " + (page-1)*10 + ", " + 10);
+            if(sort == 0) stmt = conn.prepareStatement("SELECT * FROM booksinfo ORDER BY id ASC LIMIT ?, ?");
+            else if (sort == 1) stmt = conn.prepareStatement("SELECT * FROM booksinfo ORDER BY rent_num DESC, id ASC LIMIT ?, ?");
+            else if (sort == 2) stmt = conn.prepareStatement("SELECT * FROM booksinfo WHERE !rent ORDER BY id ASC LIMIT ?, ?");
+            else if (sort == 3) stmt = conn.prepareStatement("SELECT * FROM booksinfo WHERE rent ORDER BY id ASC LIMIT ?, ?");
+            stmt.setInt(1,(page-1)*10);
+            stmt.setInt(2, 10);
+            rs = stmt.executeQuery();
 
             for(int i = 0; i < 10; i++) {
                 if (!rs.next()) break;
@@ -72,7 +80,7 @@ public class BBSListServlet extends HttpServlet {
                 list.setRentNum(i, rs.getInt("rent_num"));
                 list.setRentBy(i, rs.getString("rent_by"));
             }
-        }catch(Exception e){ throw new ServletException(e);}
+        } catch(Exception e){ throw new ServletException(e);}
         finally {
             try{stmt.close();}
             catch(Exception ignored) {}

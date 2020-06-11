@@ -19,8 +19,7 @@ public class BBSAddServlet extends HttpServlet{
             response.sendRedirect("/library?path=AddDone.jsp?DONE=Missing");
         }else{
             if(check(Integer.parseInt(id))){
-                String SQL = "INSERT INTO booksinfo (id, name, writer, price) VALUES (" + id + ", '" + name + "', '" + writer + "', " + price + ")";
-                result(SQL);
+                result(id, name, writer, price);
                 response.sendRedirect("/library?path=list");
             }else{
                 //Duplicate
@@ -29,12 +28,13 @@ public class BBSAddServlet extends HttpServlet{
         }
     }
     private boolean check(int id) throws ServletException {
-        DBConnect dbConnect = new DBConnect();
+        DBConnect dbConnect = new DBConnect("SELECT * FROM booksinfo WHERE id = ?");
         Connection conn = dbConnect.getConn();
-        Statement stmt = dbConnect.getStmt();
+        PreparedStatement stmt = dbConnect.getPstmt();
         ResultSet rs = null;
         try{
-            rs = stmt.executeQuery("SELECT * FROM booksinfo WHERE id = " + id);
+            stmt.setInt(1, id);
+            rs = stmt.executeQuery();
             if(rs.next()) return false;
             else return true;
         }catch(Exception e){
@@ -47,12 +47,17 @@ public class BBSAddServlet extends HttpServlet{
         }
     }
 
-    private void result(String SQL) throws ServletException {
+    private void result(String id, String name, String writer, String price) throws ServletException {
         DBConnect dbConnect = new DBConnect();
         Connection conn = dbConnect.getConn();
-        Statement stmt = dbConnect.getStmt();
+        PreparedStatement stmt = dbConnect.getPstmt();
         try{
-            stmt.executeUpdate(SQL);
+            stmt = conn.prepareStatement("INSERT INTO booksinfo (id, name, writer, price) VALUES (?, ?, ?, ?)");
+            stmt.setString(1, id);
+            stmt.setString(2, name);
+            stmt.setString(3, writer);
+            stmt.setString(4, price);
+            stmt.executeUpdate();
         }catch(Exception e){
             throw new ServletException(e);
         }finally{

@@ -31,11 +31,14 @@ public class InfoListServlet extends HttpServlet {
 
     private InfoList getOne(String userId) throws ServletException {
         InfoList list = new InfoList();
-        DBConnect dbConnect = new DBConnect();
-        Connection conn = dbConnect.getConn();
-        Statement stmt = dbConnect.getStmt();
+        Connection conn = null;
+        PreparedStatement stmt = null;
         try{
-            ResultSet rs = stmt.executeQuery("SELECT user_name, user_id, stu_num, phone, mail FROM members WHERE user_id = '" + userId +"'");
+            DBConnect dbConnect = new DBConnect("SELECT user_name, user_id, stu_num, phone, mail FROM members WHERE user_id = ?");
+            conn = dbConnect.getConn();
+            stmt = dbConnect.getPstmt();
+            stmt.setString(1, userId);
+            ResultSet rs = stmt.executeQuery();
             if(rs.next()){
                 list.setId(0, rs.getString("user_id"));
                 list.setName(0, rs.getString("user_name"));
@@ -56,11 +59,13 @@ public class InfoListServlet extends HttpServlet {
 
     private InfoList getList(int page) throws ServletException{
         InfoList list = new InfoList();
-        DBConnect dbConnect = new DBConnect();
-        Connection conn = dbConnect.getConn();
-        Statement stmt = dbConnect.getStmt();
+        Connection conn = null;
+        PreparedStatement stmt = null;
         try{
-            ResultSet rs = stmt.executeQuery("SELECT COUNT(*) AS COUNT FROM members");
+            DBConnect dbConnect = new DBConnect("SELECT COUNT(*) AS COUNT FROM members");
+            conn = dbConnect.getConn();
+            stmt = dbConnect.getPstmt();
+            ResultSet rs = stmt.executeQuery();
             if(page >= 10) list.setButton(0, true);
             else list.setButton(0, false);
             if(rs.next()){
@@ -83,7 +88,10 @@ public class InfoListServlet extends HttpServlet {
                 if(pageIndex + MAXINDEX <= total) list.setButton(1, true);
                 else list.setButton(1, false);
             }
-            rs = stmt.executeQuery("SELECT user_name, user_id, stu_num, phone, mail FROM members ORDER BY id ASC LIMIT " + (page-1)*10 + ", " + 10);
+            stmt = conn.prepareStatement("SELECT user_name, user_id, stu_num, phone, mail FROM members ORDER BY id ASC LIMIT ?, ?");
+            stmt.setInt(1,(page-1)*10);
+            stmt.setInt(2, 10);
+            rs = stmt.executeQuery();
             int index = 0;
             while(rs.next()){
                 list.setId(index, rs.getString("user_id"));

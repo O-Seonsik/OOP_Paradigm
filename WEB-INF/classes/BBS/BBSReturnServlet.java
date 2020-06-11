@@ -9,11 +9,12 @@ public class BBSReturnServlet extends HttpServlet{
         String returnId = request.getParameter("ID");
         if(returnId == null || returnId == "") response.sendRedirect("/library?path=list");
         else{
-            DBConnect dbConnect = new DBConnect();
+            DBConnect dbConnect = new DBConnect("UPDATE booksinfo SET rent = !rent, rent_by = NULL WHERE id = ?");
             Connection conn = dbConnect.getConn();
-            Statement stmt = dbConnect.getStmt();
+            PreparedStatement stmt = dbConnect.getPstmt();
             try{
-                stmt.executeUpdate("UPDATE booksinfo SET rent = !rent WHERE id = " + returnId);
+                stmt.setString(1, returnId);
+                stmt.executeUpdate();
                 response.sendRedirect("/library?path=list");
             }catch(Exception e){
                 throw new ServletException(e);
