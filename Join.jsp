@@ -24,7 +24,6 @@
             <input class="form-control" type="tel" placeholder="휴대전화" name="PHONE" id="PHONE" required>
             <label for="MAIL" class="sr-only">Email address</label>
             <input class="form-control" type="email" placeholder="이메일" name="MAIL" id="MAIL" required>
-
             <input style="margin-top: 10px;" class="btn btn-lg btn-primary btn-block bg-dark" type="submit" value="회원가입">
         </form>
     </body>
@@ -73,6 +72,10 @@
             }
             if(!checkBlank(phone)) return false;
             if(!checkBlank(mail)) return false;
+            if(stuNum.length > 9){
+                alert("학번은 9자리 이하입니다.")
+                return false;
+            }
         }
         <%
             String code = request.getParameter("ERROR");
