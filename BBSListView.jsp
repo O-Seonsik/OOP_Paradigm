@@ -15,34 +15,36 @@
 <h1 class="h3 mb-3 font-weight-normal">도서관리 시스템</h1>
 
 <%-- 모바일 화면 --%>
-<%--<c:forEach var="cnt" begin="0" end="${BBS_LIST.listSize-1}">--%>
-<%--    <div class="container marketing">--%>
-<%--        <div class="jumbotron mt-3">--%>
-<%--            <h2>제목: ${BBS_LIST.name[cnt]}</h2>--%>
-<%--            <p>도서번호: ${BBS_LIST.id[cnt]}</p>--%>
-<%--            <p>저자: ${BBS_LIST.writer[cnt]}</p>--%>
-<%--            <p>가격: ${BBS_LIST.price[cnt]}</p>--%>
-<%--            <c:if test="${BBS_LIST.rent[cnt]}">--%>
-<%--                <p>대여 가능 여부: T</p>--%>
-<%--            </c:if>--%>
-<%--            <c:if test="${!BBS_LIST.rent[cnt]}">--%>
-<%--                <p>대여 가능 여부: F</p>--%>
-<%--            </c:if>--%>
-<%--            <p>대여 횟수${BBS_LIST.rentNum[cnt]}</p>--%>
-<%--            <c:if test="${param.SORT eq 2}">--%>
-<%--                <p>대여자: <a href="?path=MemberInfo?USERID=${BBS_LIST.rentBy[cnt]}">${BBS_LIST.rentBy[cnt]}</a></p>--%>
-<%--            </c:if>--%>
-<%--            <% if(!(res==null || res=="")){ %>--%>
-<%--            <c:if test = "${pageScope.loginId eq BBS_LIST.rentBy[cnt]}">--%>
-<%--                <p><a href="/library/return?ID=${BBS_LIST.id[cnt]}">반납</a></p>--%>
-<%--            </c:if>--%>
-<%--            <% }%>--%>
-<%--        </div>--%>
-<%--    </div>--%>
-<%--</c:forEach>--%>
+<div id="mobile_table">
+    <c:forEach var="cnt" begin="0" end="${BBS_LIST.listSize-1}">
+        <div class="container marketing">
+            <div class="jumbotron mt-3">
+                <h2>제목: ${BBS_LIST.name[cnt]}</h2>
+                <p>도서번호: ${BBS_LIST.id[cnt]}</p>
+                <p>저자: ${BBS_LIST.writer[cnt]}</p>
+                <p>가격: ${BBS_LIST.price[cnt]}</p>
+                <c:if test="${BBS_LIST.rent[cnt]}">
+                    <p>대여 가능 여부: T</p>
+                </c:if>
+                <c:if test="${!BBS_LIST.rent[cnt]}">
+                    <p>대여 가능 여부: F</p>
+                </c:if>
+                <p>대여 횟수${BBS_LIST.rentNum[cnt]}</p>
+                <c:if test="${param.SORT eq 2}">
+                    <p>대여자: <a href="?path=MemberInfo?USERID=${BBS_LIST.rentBy[cnt]}">${BBS_LIST.rentBy[cnt]}</a></p>
+                </c:if>
+                <% if(!(res==null || res=="")){ %>
+                <c:if test = "${pageScope.loginId eq BBS_LIST.rentBy[cnt]}">
+                    <p><a href="/library/return?ID=${BBS_LIST.id[cnt]}">반납</a></p>
+                </c:if>
+                <% }%>
+            </div>
+        </div>
+    </c:forEach>
+</div>
 
 
-<table  class="table table-striped">
+<table id="table" class="table table-striped">
     <thead>
         <tr>
             <th scope="col">id</th>

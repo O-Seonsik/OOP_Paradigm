@@ -20,7 +20,7 @@
         <link rel="stylesheet" href="style/index.css">
         <title>도서관리 시스템</title>
     </head>
-    <body class="d-flex flex-column h-100">
+    <body id="body" class="d-flex flex-column h-100">
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
             <div class="container">
                 <a class="navbar-brand" href="/library">책방</a>
@@ -52,8 +52,17 @@
                                 <a class="dropdown-item <%if(strPath.equals("BBSListView.jsp") && sort == 3) out.println("bg-dark active");%>" href="/library/?path=list?SORT=3">대여 가능한 책</a>
                             </div>
                         </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">검색</a>
+                            <div class="dropdown-menu" aria-labelledby="dropdown02">
+                                <form class="form-inline my-2 my-lg-0">
+                                    <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                                </form>
+                            </div>
+                        </li>
                     </ul>
-                    <a id="logout" href="/library/Logout.jsp">로그아웃</a>
+                    <a id="logout" href="/library/Logout.jsp">로그아웃</a>s
                 </div>
             </div>
         </nav>
@@ -159,6 +168,37 @@
         </footer>
     </body>
     <script>
+        const wrapper = document.getElementById('body');
+        window.onpageshow = (event) => {
+            if(window.innerWidth < 991){
+                const table = document.getElementById("table")
+                const mobile = document.getElementById("mobile_table")
+                table.style.display="none"
+                mobile.style.display="block"
+            }
+            else{
+                const table = document.getElementById("table")
+                const mobile = document.getElementById("mobile_table")
+                table.style.display="block"
+                mobile.style.display="none"
+            }
+        }
+
+        window.addEventListener("resize", function(){
+            if(window.innerWidth < 991){
+                const table = document.getElementById("table")
+                const mobile = document.getElementById("mobile_table")
+                table.style.display="none"
+                mobile.style.display="block"
+            }
+            else{
+                const table = document.getElementById("table")
+                const mobile = document.getElementById("mobile_table")
+                table.style.display="block"
+                mobile.style.display="none"
+            }
+        });
+
         const checkBlank = (value) => {
             let blank_pattern = /^\s+|\s+$/g;
             if (value.replace(blank_pattern, "") == "") {
