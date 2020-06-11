@@ -6,14 +6,19 @@
     int pageSize = list.getPage().length;
     String res = (String)request.getAttribute("RETURN");
     String strPage = (String)request.getParameter("PAGE");
+    String search = (String)request.getParameter("SEARCH");
     int pageNum = 1;
     if(strPage != "" && strPage != null) pageNum = Integer.parseInt(strPage);
     pageContext.setAttribute("pageNum", pageNum);
     String loginId = (String)session.getAttribute("ID");
     pageContext.setAttribute("loginId", loginId);
 %>
+<% if(search == null || search == "") {%>
 <h1 class="h3 mb-3 font-weight-normal">도서관리 시스템</h1>
-
+<%}else{%>
+<h1 class="h3 mb-3 font-weight-normal">도서관리 시스템 - 검색결과</h1>
+<%}%>
+<% if (list.getListSize() != 0){%>
 <%-- 모바일 화면 --%>
 <div id="mobile_table">
     <c:forEach var="cnt" begin="0" end="${BBS_LIST.listSize-1}">
@@ -61,8 +66,6 @@
             </c:if>
         </tr>
     </thead>
-
-    <% if (list.getListSize() != 0){%>
     <c:forEach var="cnt" begin="0" end="${BBS_LIST.listSize-1}">
         <tr>
             <td>${BBS_LIST.id[cnt]}</td>
@@ -95,23 +98,56 @@
 <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
     <div class="btn-group mr-2" role="group" aria-label="First group">
         <c:if test = "${BBS_LIST.button[0]}">
-            <button type="button" class="btn btn-secondary" onclick="location='/library/?path=list?SORT=${param.SORT}&PAGE=${BBS_LIST.page[0]-1}&RETURN=${param.RETURN}'">◀</button>
+            <button type="button" class="btn btn-secondary" onclick="location='/library/?path=list?SEARCH=${param.SEARCH}&SORT=${param.SORT}&PAGE=${BBS_LIST.page[0]-1}&RETURN=${param.RETURN}'">◀</button>
         </c:if>
         <c:forEach var="cnt" begin="0" end="<%=pageSize-1%>">
 
             <c:if test="${pageScope.pageNum eq BBS_LIST.page[cnt]}">
-                <button type="button" class="btn btn-secondary active" onclick="location='/library/?path=list?SORT=${param.SORT}&PAGE=${BBS_LIST.page[cnt]}&RETURN=${param.RETURN}'">${BBS_LIST.page[cnt]}</button>
+                <button type="button" class="btn btn-secondary active" onclick="location='/library/?path=list?SEARCH=${param.SEARCH}&SORT=${param.SORT}&PAGE=${BBS_LIST.page[cnt]}&RETURN=${param.RETURN}'">${BBS_LIST.page[cnt]}</button>
             </c:if>
             <c:if test="${pageScope.pageNum ne BBS_LIST.page[cnt]}">
-                <button type="button" class="btn btn-secondary" onclick="location='/library/?path=list?SORT=${param.SORT}&PAGE=${BBS_LIST.page[cnt]}&RETURN=${param.RETURN}'">${BBS_LIST.page[cnt]}</button>
+                <button type="button" class="btn btn-secondary" onclick="location='/library/?path=list?SEARCH=${param.SEARCH}&SORT=${param.SORT}&PAGE=${BBS_LIST.page[cnt]}&RETURN=${param.RETURN}'">${BBS_LIST.page[cnt]}</button>
             </c:if>
         </c:forEach>
         <c:if test = "${BBS_LIST.button[1]}">
             <c:set var="test" value="<%=pageSize%>" />
-            <button type="button" class="btn btn-secondary" onclick="location='/library/?path=list?SORT=${param.SORT}&PAGE=${BBS_LIST.page[test-1]+1}&RETURN=${param.RETURN}'">▶</button>
+            <button type="button" class="btn btn-secondary" onclick="location='/library/?path=list?SEARCH=${param.SEARCH}&SORT=${param.SORT}&PAGE=${BBS_LIST.page[test-1]+1}&RETURN=${param.RETURN}'">▶</button>
         </c:if>
     </div>
 </div>
- <%}else{
-        out.println("도서 없음");
- }%>
+ <%}else{%>
+    <div style="text-align: center;" class="alert alert-dark" role="alert">
+        <span>도서가 없습니다.</span>
+    </div>
+ <%}%>
+    <script>
+    const wrapper = document.getElementById('body');
+    window.addEventListener("resize", function(){
+        if(window.innerWidth < 991){
+            const table = document.getElementById("table")
+            const mobile = document.getElementById("mobile_table")
+            table.style.display="none"
+            mobile.style.display="block"
+        }
+        else{
+            const table = document.getElementById("table")
+            const mobile = document.getElementById("mobile_table")
+            table.style.display="block"
+            mobile.style.display="none"
+        }
+    });
+    window.onpageshow = (event) => {
+        if(window.innerWidth < 991){
+            const table = document.getElementById("table")
+            const mobile = document.getElementById("mobile_table")
+            table.style.display="none"
+            mobile.style.display="block"
+        }
+        else{
+            const table = document.getElementById("table")
+            const mobile = document.getElementById("mobile_table")
+            table.style.display="block"
+            mobile.style.display="none"
+        }
+    }
+</script>

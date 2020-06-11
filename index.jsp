@@ -54,15 +54,15 @@
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">검색</a>
-                            <div class="dropdown-menu" aria-labelledby="dropdown02">
-                                <form class="form-inline my-2 my-lg-0">
-                                    <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-                                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                            <div id="search" class="dropdown-menu" aria-labelledby="dropdown02">
+                                <form class="form-inline my-2 my-lg-0" action="list" method="get">
+                                    <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" name="SEARCH">
+                                    <button class="btn btn-outline-success my-2 my-sm-0 bg-dark" type="submit">Search</button>
                                 </form>
                             </div>
                         </li>
                     </ul>
-                    <a id="logout" href="/library/Logout.jsp">로그아웃</a>s
+                    <a id="logout" href="/library/Logout.jsp">로그아웃</a>
                 </div>
             </div>
         </nav>
@@ -168,37 +168,6 @@
         </footer>
     </body>
     <script>
-        const wrapper = document.getElementById('body');
-        window.onpageshow = (event) => {
-            if(window.innerWidth < 991){
-                const table = document.getElementById("table")
-                const mobile = document.getElementById("mobile_table")
-                table.style.display="none"
-                mobile.style.display="block"
-            }
-            else{
-                const table = document.getElementById("table")
-                const mobile = document.getElementById("mobile_table")
-                table.style.display="block"
-                mobile.style.display="none"
-            }
-        }
-
-        window.addEventListener("resize", function(){
-            if(window.innerWidth < 991){
-                const table = document.getElementById("table")
-                const mobile = document.getElementById("mobile_table")
-                table.style.display="none"
-                mobile.style.display="block"
-            }
-            else{
-                const table = document.getElementById("table")
-                const mobile = document.getElementById("mobile_table")
-                table.style.display="block"
-                mobile.style.display="none"
-            }
-        });
-
         const checkBlank = (value) => {
             let blank_pattern = /^\s+|\s+$/g;
             if (value.replace(blank_pattern, "") == "") {
