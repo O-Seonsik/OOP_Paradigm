@@ -7,6 +7,9 @@
     if(strSort != "" && strSort != null) sort = Integer.parseInt(strSort);
     String returnVal = (String)request.getParameter("RETURN");
     if(returnVal == "" || returnVal == null) returnVal = "";
+    String userID = (String)session.getAttribute("ID");
+    String strUserId = (String)request.getParameter("USERID");
+    if(strUserId == "" || strUserId == null) strUserId = "";
 %>
 <html>
     <head>
@@ -55,6 +58,9 @@
                                     <button class="btn btn-outline-success my-2 my-sm-0 bg-dark" type="submit">Search</button>
                                 </form>
                             </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link <%if(strPath.equals("MemberInfoView.jsp") && strUserId.equals(userID)) out.println("active");%>" href="MemberInfo?USERID=<%=userID%>">마이페이지</a>
                         </li>
                     </ul>
                     <a id="logout" href="/library/Logout.jsp">로그아웃</a>

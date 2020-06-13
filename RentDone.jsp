@@ -6,4 +6,4 @@
     else if(result.equals("NO")) out.println("대여할 수 없습니다.");
 %>
 </div>
-<button type="button" class="btn btn-lg btn-primary btn-block bg-dark" style="width:30%; float: right;" onclick="location='https://test.oseonsik.com/library/?path=Rent.jsp'">돌아가기</button>
+<button type="button" class="btn btn-lg btn-primary btn-block bg-dark" style="width:30%; float: right;" onclick="location='javascript:history.back()'">돌아가기</button>
